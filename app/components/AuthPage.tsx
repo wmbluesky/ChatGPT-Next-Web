@@ -7,30 +7,38 @@ import BotIcon from "../icons/bot.svg";
 import { getClientConfig } from "../config/client";
 import { RegisterLoginPage } from "./RegisterLogin";
 
-export function AuthPage() {
+type AuthPageProps = {
+  onLoginSuccess: () => void;
+};
+
+export function AuthPage({ onLoginSuccess }: AuthPageProps) {
   const navigate = useNavigate();
   const access = useAccessStore();
 
   useEffect(() => {
     if (getClientConfig()?.isApp) {
-      navigate(Path.Settings);
+      navigate("./RegisterLogin");
     } else if (!access.accessCode) {
       navigate("./RegisterLogin");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleLoginSuccess = () => {
+    onLoginSuccess();
+    navigate(Path.Home);
+  };
 
   return (
     <div>
       {!access.accessCode ? (
-        <RegisterLoginPage />
+        <RegisterLoginPage onLoginSuccess={handleLoginSuccess} />
       ) : (
         <div>
           <div>
             <BotIcon />
           </div>
           <div>{Locale.Auth.Title}</div>
-          navigate(Path.Home);
+          <button onClick={handleLoginSuccess}>登录</button>
         </div>
       )}
     </div>

@@ -13,7 +13,7 @@ export default async function handler(
   try {
     const response = await axios.post(wechatPayUrl);
     const qrCodeUrl = response.data.qrCodeUrl;
-    console.log("[wechatPayUrl]", wechatPayUrl);
+
     res.status(200).json({ qrCodeUrl });
   } catch (error) {
     res.status(500).json({ error: "Failed to process payment" });

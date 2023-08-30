@@ -25,12 +25,11 @@ import {
 } from "react-router-dom";
 import { SideBar } from "./sidebar";
 import { useAppConfig } from "../store/config";
-/*import { AuthPage } from "./auth";*/
+import { AuthPage } from "./auth";
 import { getClientConfig } from "../config/client";
 import { api } from "../client/api";
 import { useAccessStore } from "../store";
 import RechargePage from "./RechargePage";
-import { AuthPage } from "./AuthPage";
 
 export function Loading(props: { noLogo?: boolean }) {
   return (
@@ -158,7 +157,7 @@ function Screen() {
               <Route path={Path.Masks} element={<MaskPage />} />
               <Route path={Path.Chat} element={<Chat />} />
               <Route path={Path.Settings} element={<Settings />} />
-              <Route path="/recharge" element={<RechargePage />} />
+              <Route path={Path.Recharge} element={<RechargePage />} />
             </Routes>
           </div>
         </>

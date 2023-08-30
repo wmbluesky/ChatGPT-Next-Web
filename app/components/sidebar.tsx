@@ -118,11 +118,9 @@ export function SideBar(props: { className?: string }) {
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
         <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          ChatGPT Next
+          ChatGPT
         </div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
-        </div>
+        <div className={styles["sidebar-sub-title"]}>您的AI助手</div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
         </div>
@@ -168,20 +166,11 @@ export function SideBar(props: { className?: string }) {
               }}
             />
           </div>
+
           <div className={styles["sidebar-action"]}>
-            <Link to={Path.Settings}>
-              <IconButton icon={<SettingsIcon />} shadow />
+            <Link to={Path.Recharge}>
+              <IconButton icon={<RechargeIcon />} text="充值" shadow />
             </Link>
-          </div>
-          <div className={styles["sidebar-action"]}>
-            <IconButton
-              icon={<RechargeIcon />}
-              text="充值"
-              shadow
-              onClick={() => {
-                navigate("/recharge");
-              }}
-            />
           </div>
         </div>
         <div>
